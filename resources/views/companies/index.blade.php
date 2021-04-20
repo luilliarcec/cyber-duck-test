@@ -1,5 +1,17 @@
 @extends('layout')
 
+@section('breadcrumps')
+    <div class="row mb-2">
+        <div class="col-sm-6">
+            <h1>Companies</h1>
+        </div>
+
+        <div class="col-sm-6 text-right">
+            <a href="{{ route('companies.create') }}" class="btn btn-success">Add new company</a>
+        </div>
+    </div>
+@endsection
+
 @section('content')
     <div class="row">
         <div class="col-12">
