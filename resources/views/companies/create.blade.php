@@ -9,7 +9,23 @@
                     <h3 class="card-title">Companies</h3>
                 </div>
 
-                <form action="{{ route('companies.create') }}" method="post">
+                @if($errors->any())
+                    <div class="alert alert-danger alert-dismissible m-4">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h5>
+                            <i class="icon fas fa-ban"></i>
+                            Alert!
+                        </h5>
+
+                        <ul>
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <form action="{{ route('companies.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
 
                     <div class="card-body">
@@ -21,6 +37,7 @@
                                 name="name"
                                 class="form-control"
                                 placeholder="Enter name"
+                                value="{{ old('name') }}"
                             >
                         </div>
 
@@ -32,6 +49,7 @@
                                 name="email"
                                 class="form-control"
                                 placeholder="Enter email"
+                                value="{{ old('email') }}"
                             >
                         </div>
 
@@ -43,6 +61,7 @@
                                 name="website"
                                 class="form-control"
                                 placeholder="Enter website url"
+                                value="{{ old('website') }}"
                             >
                         </div>
 
@@ -54,6 +73,7 @@
                                     <input
                                         type="file"
                                         id="logo"
+                                        name="logo"
                                         class="custom-file-input"
                                     >
 
