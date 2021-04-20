@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CompanyRequest;
 use App\Models\Company;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class CompaniesController extends Controller
@@ -102,10 +101,17 @@ class CompaniesController extends Controller
      * Remove the specified resource from storage.
      *
      * @param Company $company
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Company $company)
     {
-        //
+        if ($company->logo) {
+            Storage::delete($company->logo);
+        }
+
+        $company->delete();
+
+        return redirect()->back()
+            ->with(['response' => __('response.success.delete')]);
     }
 }

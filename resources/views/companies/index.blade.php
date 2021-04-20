@@ -39,9 +39,15 @@
                                            class="btn btn-default">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <button type="button" class="btn btn-default">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
+                                        <form action="{{ route('companies.destroy', $company) }}"
+                                              method="post" class="form-delete">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit"
+                                                    class="btn btn-default">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
                                     </div>
                                 </td>
                             </tr>
@@ -57,3 +63,18 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        document.querySelectorAll('.form-delete')
+            .forEach(element => element.addEventListener('submit', evt => {
+                evt.preventDefault();
+
+                let response = confirm("Are you sure to delete this record?");
+
+                if (response) {
+                    console.log(evt.target.submit())
+                }
+            }))
+    </script>
+@endpush
