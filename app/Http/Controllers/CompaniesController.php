@@ -10,11 +10,13 @@ class CompaniesController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function index()
+    public function index(): \Illuminate\Contracts\View\View
     {
-        //
+        return view('companies.index', [
+            'companies' => Company::query()->paginate(10)
+        ]);
     }
 
     /**
