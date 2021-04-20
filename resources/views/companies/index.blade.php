@@ -30,7 +30,19 @@
                                 </td>
                                 <td>{{ $company->name }}</td>
                                 <td>{{ $company->email }}</td>
-                                <td>Actions</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-default">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-default">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-default">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>
