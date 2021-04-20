@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 
 Route::resource('companies', \App\Http\Controllers\CompaniesController::class);
+Route::resource('employees', \App\Http\Controllers\EmployeesController::class);
