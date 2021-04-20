@@ -206,27 +206,19 @@
 
                     <li class="nav-header">LINKS</li>
                     <li class="nav-item">
-                        <a href="../calendar.html" class="nav-link">
-                            <i class="nav-icon far fa-calendar-alt"></i>
+                        <a href="{{ route('companies.index') }}" class="nav-link">
+                            <i class="nav-icon fas fa-industry"></i>
                             <p>
-                                Calendar
-                                <span class="badge badge-info right">2</span>
+                                Companies
                             </p>
                         </a>
                     </li>
+
                     <li class="nav-item">
-                        <a href="../gallery.html" class="nav-link">
-                            <i class="nav-icon far fa-image"></i>
+                        <a href="" class="nav-link">
+                            <i class="nav-icon fas fa-briefcase"></i>
                             <p>
-                                Gallery
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../kanban.html" class="nav-link">
-                            <i class="nav-icon fas fa-columns"></i>
-                            <p>
-                                Kanban Board
+                                Employees
                             </p>
                         </a>
                     </li>
@@ -242,18 +234,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1>Fixed Layout</h1>
-                    </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Layout</a></li>
-                            <li class="breadcrumb-item active">Fixed Layout</li>
-                        </ol>
-                    </div>
-                </div>
+                @yield('breadcrumps')
             </div><!-- /.container-fluid -->
         </section>
 
