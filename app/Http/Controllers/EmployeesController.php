@@ -49,17 +49,6 @@ class EmployeesController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param Employee $employee
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Employee $employee)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param Employee $employee

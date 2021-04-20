@@ -45,9 +45,6 @@
                                 <td>{{ $employee->phone }}</td>
                                 <td>
                                     <div class="btn-group">
-                                        <a type="button" class="btn btn-default">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
                                         <a href="{{ route('employees.edit', $employee) }}" type="button"
                                            class="btn btn-default">
                                             <i class="fas fa-edit"></i>

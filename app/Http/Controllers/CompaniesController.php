@@ -51,17 +51,6 @@ class CompaniesController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param Company $company
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Company $company)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param Company $company

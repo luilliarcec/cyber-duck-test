@@ -44,9 +44,6 @@
                                 <td>{{ $company->email }}</td>
                                 <td>
                                     <div class="btn-group">
-                                        <a type="button" class="btn btn-default">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
                                         <a href="{{ route('companies.edit', $company) }}" type="button"
                                            class="btn btn-default">
                                             <i class="fas fa-edit"></i>

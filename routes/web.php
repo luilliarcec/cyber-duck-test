@@ -24,6 +24,6 @@ Route::middleware(['auth:web'])->group(function () {
         return view('layout');
     })->name('home');
 
-    Route::resource('companies', \App\Http\Controllers\CompaniesController::class);
-    Route::resource('employees', \App\Http\Controllers\EmployeesController::class);
+    Route::resource('companies', \App\Http\Controllers\CompaniesController::class)->except(['show']);
+    Route::resource('employees', \App\Http\Controllers\EmployeesController::class)->except(['show']);
 });
