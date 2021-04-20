@@ -64,11 +64,16 @@ class EmployeesController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param Employee $employee
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function edit(Employee $employee)
+    public function edit(Employee $employee): \Illuminate\Contracts\View\View
     {
-        //
+        return view('employees.edit', [
+            'companies' => Company::all(['id', 'name'])
+                ->pluck('name', 'id')
+                ->toArray(),
+            'employee' => $employee,
+        ]);
     }
 
     /**
