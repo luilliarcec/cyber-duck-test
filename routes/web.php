@@ -13,9 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes(['register' => false]);
+
 Route::get('/', function () {
-    return view('layout');
+    return view('welcome');
 });
 
-Route::resource('companies', \App\Http\Controllers\CompaniesController::class);
-Route::resource('employees', \App\Http\Controllers\EmployeesController::class);
+Route::middleware(['auth:web'])->group(function () {
+    Route::get('/home', function () {
+        return view('layout');
+    })->name('home');
+
+    Route::resource('companies', \App\Http\Controllers\CompaniesController::class);
+    Route::resource('employees', \App\Http\Controllers\EmployeesController::class);
+});
