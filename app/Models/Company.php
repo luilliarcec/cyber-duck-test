@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Company extends Model
 {
@@ -15,4 +16,13 @@ class Company extends Model
         'logo',
         'website',
     ];
+
+    public function getLogoAttribute($value): ?string
+    {
+        if ($value) {
+            return Storage::url($value);
+        }
+
+        return null;
+    }
 }
