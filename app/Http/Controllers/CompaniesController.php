@@ -38,7 +38,13 @@ class CompaniesController extends Controller
      */
     public function store(CompanyRequest $request): \Illuminate\Http\RedirectResponse
     {
-        Company::create($request->validated());
+        $data = $request->validated();
+
+        if (isset($data['logo'])) {
+            $data['logo'] = $request->file('logo')->store('public');
+        }
+
+        Company::create($data);
 
         return redirect()->back()
             ->with(['response' => __('response.success.create')]);

@@ -2,9 +2,12 @@
 
 namespace Tests\Feature\Company;
 
+use App\Models\Company;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Tests\TestCase;
 
 class CreateCompanyTest extends TestCase
@@ -83,7 +86,7 @@ class CreateCompanyTest extends TestCase
     public function it_is_validated_that_the_logo_is_a_image_with_100_x_100()
     {
         $this->from('/companies/create')
-            ->post('/companies', ['logo' => UploadedFile::fake()->image('logo.jpg', 101, 101)])
+            ->post('/companies', ['logo' => UploadedFile::fake()->image('logo.jpg', 99, 99)])
             ->assertSessionHasErrors(['logo' => 'The logo has invalid image dimensions.']);
     }
 
@@ -123,5 +126,32 @@ class CreateCompanyTest extends TestCase
             'email' => 'cyber-duck@email.com',
             'website' => 'https://www.cyber-duck.com',
         ]);
+    }
+
+    /** @test */
+    public function save_company_with_image()
+    {
+        $this->from('/companies/create')
+            ->post('/companies', [
+                'name' => 'Cyber Duck',
+                'email' => 'cyber-duck@email.com',
+                'website' => 'https://www.cyber-duck.com',
+                'logo' => UploadedFile::fake()->image('cyber-duck.jpg', 120, 120),
+            ])
+            ->assertRedirect('/companies/create')
+            ->assertSessionHasNoErrors()
+            ->assertSessionHas('response', __('response.success.create'));
+
+        $this->assertDatabaseHas('companies', [
+            'name' => 'Cyber Duck',
+            'email' => 'cyber-duck@email.com',
+            'website' => 'https://www.cyber-duck.com',
+        ]);
+
+        $company = Company::query()->where(['name' => 'Cyber Duck'])->first();
+
+        Storage::disk('public')->assertExists(
+            explode('/', $company->logo)[1]
+        );
     }
 }
