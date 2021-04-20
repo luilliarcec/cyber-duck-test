@@ -22,11 +22,11 @@ class CompaniesController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function create()
+    public function create(): \Illuminate\Contracts\View\View
     {
-        //
+        return view('companies.create');
     }
 
     /**
