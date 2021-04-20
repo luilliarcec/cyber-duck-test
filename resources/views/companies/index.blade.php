@@ -32,12 +32,13 @@
                                 <td>{{ $company->email }}</td>
                                 <td>
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-default">
+                                        <a type="button" class="btn btn-default">
                                             <i class="fas fa-eye"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-default">
+                                        </a>
+                                        <a href="{{ route('companies.edit', $company) }}" type="button"
+                                           class="btn btn-default">
                                             <i class="fas fa-edit"></i>
-                                        </button>
+                                        </a>
                                         <button type="button" class="btn btn-default">
                                             <i class="fas fa-trash"></i>
                                         </button>
