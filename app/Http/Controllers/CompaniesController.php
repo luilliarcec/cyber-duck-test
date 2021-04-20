@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CompanyRequest;
 use App\Models\Company;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CompaniesController extends Controller
 {
@@ -75,13 +76,26 @@ class CompaniesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param CompanyRequest $request
      * @param Company $company
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Company $company)
+    public function update(CompanyRequest $request, Company $company): \Illuminate\Http\RedirectResponse
     {
-        //
+        $data = $request->validated();
+
+        if (isset($data['logo'])) {
+            $data['logo'] = $request->file('logo')->store('public');
+
+            if ($company->logo) {
+                Storage::delete($company->logo);
+            }
+        }
+
+        $company->update($data);
+
+        return redirect()->back()
+            ->with(['response' => __('response.success.edit')]);
     }
 
     /**
