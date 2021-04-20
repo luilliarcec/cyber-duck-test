@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\EmployeeRequest;
 use App\Models\Company;
 use App\Models\Employee;
-use Illuminate\Http\Request;
 
 class EmployeesController extends Controller
 {
@@ -79,13 +78,16 @@ class EmployeesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param EmployeeRequest $request
      * @param Employee $employee
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Employee $employee)
+    public function update(EmployeeRequest $request, Employee $employee): \Illuminate\Http\RedirectResponse
     {
-        //
+        $employee->update($request->validated());
+
+        return redirect()->back()
+            ->with(['response' => __('response.success.edit')]);
     }
 
     /**
