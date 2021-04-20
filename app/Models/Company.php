@@ -25,4 +25,9 @@ class Company extends Model
 
         return null;
     }
+
+    public function employees(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Employee::class);
+    }
 }
