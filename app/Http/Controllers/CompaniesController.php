@@ -65,11 +65,11 @@ class CompaniesController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param Company $company
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function edit(Company $company)
+    public function edit(Company $company): \Illuminate\Contracts\View\View
     {
-        //
+        return view('companies.edit', compact('company'));
     }
 
     /**
