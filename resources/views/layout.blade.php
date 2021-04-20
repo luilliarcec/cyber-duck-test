@@ -242,6 +242,16 @@
         <section class="content">
 
             <div class="container-fluid">
+                @if ($_response = session('response'))
+                    @if($_response['status'] == 200)
+                        <div class="alert alert-success alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            <h5><i class="icon fas fa-check"></i> Success!</h5>
+                            {{ $_response['message'] }}
+                        </div>
+                    @endif
+                @endif
+
                 @yield('content')
             </div>
         </section>
