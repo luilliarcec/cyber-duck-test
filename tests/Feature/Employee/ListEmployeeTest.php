@@ -4,6 +4,7 @@ namespace Tests\Feature\Employee;
 
 use App\Models\Company;
 use App\Models\Employee;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -16,6 +17,8 @@ class ListEmployeeTest extends TestCase
         parent::setUp();
 
         $this->withoutExceptionHandling();
+
+        $this->actingAs(User::factory()->create());
     }
 
     /** @test */

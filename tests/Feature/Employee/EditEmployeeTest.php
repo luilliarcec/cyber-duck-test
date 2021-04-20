@@ -4,6 +4,7 @@ namespace Tests\Feature\Employee;
 
 use App\Models\Company;
 use App\Models\Employee;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -12,6 +13,13 @@ class EditEmployeeTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->actingAs(User::factory()->create());
+    }
 
     /** @test */
     public function can_access_to_employee_form_create()
