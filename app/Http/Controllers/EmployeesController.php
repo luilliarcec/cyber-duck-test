@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 
@@ -22,11 +23,15 @@ class EmployeesController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function create()
+    public function create(): \Illuminate\Contracts\View\View
     {
-        //
+        return view('employees.create', [
+            'companies' => Company::all(['id', 'name'])
+                ->pluck('name', 'id')
+                ->toArray()
+        ]);
     }
 
     /**
