@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CompanyRequest;
 use App\Models\Company;
 use Illuminate\Http\Request;
 
@@ -32,12 +33,15 @@ class CompaniesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
-     * @return \Illuminate\Http\Response
+     * @param CompanyRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(CompanyRequest $request): \Illuminate\Http\RedirectResponse
     {
-        //
+        Company::create($request->validated());
+
+        return redirect()->back()
+            ->with(['response' => __('response.success.create')]);
     }
 
     /**
