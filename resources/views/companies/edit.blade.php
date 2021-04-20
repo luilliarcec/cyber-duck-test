@@ -31,7 +31,7 @@
 
                     <div class="card-body">
                         <div class="form-group">
-                            <img src="{{ $company->logo }}" class="img-size-50 mr-5 img-circle"
+                            <img src="{{ $company->logo_url }}" class="img-size-50 mr-5 img-circle"
                                  alt="company_logo">
                         </div>
 

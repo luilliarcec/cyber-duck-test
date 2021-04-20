@@ -17,10 +17,10 @@ class Company extends Model
         'website',
     ];
 
-    public function getLogoAttribute($value): ?string
+    public function getLogoUrlAttribute(): ?string
     {
-        if ($value) {
-            return Storage::url($value);
+        if ($this->logo) {
+            return Storage::url($this->logo);
         }
 
         return null;

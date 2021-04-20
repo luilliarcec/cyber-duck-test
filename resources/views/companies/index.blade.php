@@ -25,7 +25,7 @@
                             <tr>
                                 <td>{{ $company->id }}</td>
                                 <td>
-                                    <img src="{{ $company->logo }}" class="img-size-50 mr-3 img-circle"
+                                    <img src="{{ $company->logo_url }}" class="img-size-50 mr-3 img-circle"
                                          alt="company_logo">
                                 </td>
                                 <td>{{ $company->name }}</td>
